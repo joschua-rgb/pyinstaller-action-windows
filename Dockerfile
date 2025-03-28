@@ -3,8 +3,8 @@ FROM jackmckew/pyinstaller-windows
 #extra winetrick step to fix "Unimplemented function ucrtbase.dll.crealf called"
 RUN set -x \
     && rm -f "$W_TMP"/* \
-    && wget -P "$W_TMP" https://download.visualstudio.microsoft.com/download/pr/5efdbcb7-d3bd-4432-a2fb-b267c386e2f3/49545CB0F6499C4A65E1E8D5033441EEEB4EDFAE465A68489A70832C6A4F6399/VC_redist.x86.exe \
-    && cabextract -q --directory="$W_TMP" "$W_TMP"/VC_redist.x86.exe \
+    && wget -P "$W_TMP" https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240/VC_redist.x64.exe \
+    && cabextract -q --directory="$W_TMP" "$W_TMP"/VC_redist.x64.exe \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a10" \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a11" \
     && cd "$W_TMP" \
