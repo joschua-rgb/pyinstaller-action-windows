@@ -14,8 +14,8 @@ FROM jackmckew/pyinstaller-windows
 RUN rm -f "$W_TMP"/* 
 RUN wget -P "$W_TMP" https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240/VC_redist.x64.exe 
 RUN cabextract -q --directory="$W_TMP" "$W_TMP"/VC_redist.x64.exe 
-RUN cabextract -q --directory="$W_TMP" "$W_TMP/a10" 
-RUN cabextract -q --directory="$W_TMP" "$W_TMP/a11" 
+RUN cabextract -q --directory="$W_TMP" "$W_TMP/a12" 
+RUN cabextract -q --directory="$W_TMP" "$W_TMP/a13" 
 RUN cd "$W_TMP" 
 RUN rename 's/_/\-/g' *.dll 
 RUN cp -f "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
