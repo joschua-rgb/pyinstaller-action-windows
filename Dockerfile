@@ -9,7 +9,7 @@ RUN set -x \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a11" \
     && cd "$W_TMP" \
     && rename 's/_/\-/g' *.dll \
-    && cp "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
+    && cp -f "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
 
     
 COPY entrypoint.sh /entrypoint.sh
