@@ -1,10 +1,5 @@
 FROM jackmckew/pyinstaller-windows
 
-ENV W_DRIVE_C=/wine/drive_c
-ENV W_WINDIR_UNIX="$W_DRIVE_C/windows"
-ENV W_SYSTEM64_DLLS="$W_WINDIR_UNIX/system32"
-ENV W_TMP="$W_DRIVE_C/windows/temp"
-
 #extra winetrick step to fix "Unimplemented function ucrtbase.dll.crealf called"
 RUN set -x \
     && sudo apt-get install -y xvfb \
