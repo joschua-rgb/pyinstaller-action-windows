@@ -14,7 +14,7 @@ RUN set -x \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a13" \
     && cd "$W_TMP" \
     && ls -la \    
-    && rename 's/_/\-/g' *.dll \
+    && rename 's/_amd64$//; s/_/-/g' *.dll_amd64 \
     && cp -f "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
 
 
