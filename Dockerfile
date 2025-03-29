@@ -5,7 +5,7 @@ RUN set -x \
     && sudo apt-get install -y xvfb \
     && Xvfb :0 -screen 0 1024x768x16 & \
     && winetricks allfonts \
-    && DISPLAY=:0.0 winetricks vcrun2019 \
+    && DISPLAY=:0.0 winetricks vcrun2019
     
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
