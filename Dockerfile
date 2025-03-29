@@ -7,17 +7,10 @@ ENV W_TMP="$W_DRIVE_C/windows/temp"
 
 #extra winetrick step to fix "Unimplemented function ucrtbase.dll.crealf called"
 RUN set -x \
-    && rm -rf "$W_TMP"/* \
-    && wget -P "$W_TMP" https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240/VC_redist.x64.exe \
-    && cabextract -q --directory="$W_TMP" "$W_TMP"/VC_redist.x64.exe \
-    && cabextract -q --directory="$W_TMP" "$W_TMP/a12" \
-    && cabextract -q --directory="$W_TMP" "$W_TMP/a13" \
-    && cd "$W_TMP" \
-    && ls -la \    
-    && rename 's/_amd64$//; s/_/-/g' *.dll_amd64 \
-    && cp -f "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
-
-
+    && sudo apt-get install -y xvfb \
+    && Xvfb :0 -screen 0 1024x768x16 & \
+    && winetricks allfonts \
+    && DISPLAY=:0.0 winetricks vcrun2019 \
     
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
